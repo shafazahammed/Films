@@ -1,0 +1,23 @@
+<h2 class="text-center mt-3">Movie Lists</h2>
+<div class="row m-5">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="card bg-light text-dark">
+        <img class="card-img img-fluid p-4" src="{{films[index].photo}}" alt="{{films[index].name}}">
+
+        <div class="card-body p-4">
+          <h6 class="card-title">Movie title : {{films[index].name}}</h6>
+          <p class="card-title" >Movie Genre : <span class="badge badge-warning mx-1" *ngFor="let genre of films[index].genre"> {{genre}} </span></p>
+
+          <p class="card-text">Description :{{ (films[index].description.length>100)? (films[index].description | slice:0:100)+'...':(films[index].description) }}<small>...</small><a class="btn btn-primary text-light" (click)="getDetail()">&nbsp;Know More</a></p>
+
+        </div>
+        <hr>
+        <div class="card-button float-left">
+          <button type="button" *ngIf="index != 0"  class="btn btn-primary text-light float-left m-3" (click)="prev();">Prev</button>
+          <button type="button" *ngIf="index + 1 != films.length"  class="btn btn-primary text-light float-left m-3" (click)="next();" >Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

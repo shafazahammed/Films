@@ -1,0 +1,12 @@
+.card-img{
+  min-height: 400px;
+  max-height: 700px;
+}
+a,div{
+  pointer-events: all;
+  position: relative;;
+}
+.card-button {
+  left : 80%;
+}
+

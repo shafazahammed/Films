@@ -1,0 +1,55 @@
+
+<div class="row m-5">
+  <div class="container">
+    <h2 class="text-center my-2">Movie Details</h2>
+    <button class="btn btn-primary" (click)="back()">Back</button>
+    <div class="col-lg-12">
+      <div class="text-dark">
+          <img class="img-fluid p-4" max-height="600px" src="{{film.photo}}" alt="movie image">
+        <div class="p-4">
+          <h6 class="">Movie Title : {{film.name}}</h6>
+          <p class="">Movie Genre : <span *ngFor="let genre of film.genre" class="badge badge-warning">{{genre}}</span></p>
+          <p>Movie Release Date : {{film.releasedate}}</p>
+          <p>Movie Country: {{film.country}}</p>
+          <p>Movie Rating :  {{film.rating}}</p>
+          <p class="mb-3">Movie Ticket Price :  {{film.ticketprice}}</p>
+          <p>Description : {{film.description}}</p>
+          <hr class="my-3">
+          <div class="row bootstrap snippets">
+            <div class="col-lg-12 col-md-offset-2 col-sm-12">
+                <div class="comment-wrapper">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            Comment panel
+                        </div>
+                        <div class="panel-body">
+                            <textarea class="form-control"  placeholder="write a comment..." [(ngModel)]="comment" rows="3"></textarea>
+                            <br>
+                            <button type="button" class="btn btn-info pull-right" *ngIf="!posting" (click)="postComment()">Post</button>
+                            <button type="button" class="btn btn-info pull-right" disabled *ngIf="posting">Posting</button>
+                            <div class="clearfix"></div>
+                            <hr>
+                            <ul class="media-list" >
+                                <li class="media" *ngFor="let message of comments">
+                                  <div class="media-body">
+                                      <span class="text-muted pull-right">
+                                          <small class="text-muted">{{message.created | date}}</small>
+                                      </span>
+                                      <strong class="text-success">@{{message.user_name}}</strong>
+                                      <p>
+                                          {{message.comment}}.
+                                      </p>
+                                  </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
