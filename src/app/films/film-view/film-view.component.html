@@ -28,6 +28,7 @@
                             <button type="button" class="btn btn-info pull-right" *ngIf="!posting" (click)="postComment()">Post</button>
                             <button type="button" class="btn btn-info pull-right" disabled *ngIf="posting">Posting</button>
                             <div class="clearfix"></div>
+                            <p class="text-danger" *ngIf="!isLoggedIn&&loginerror">Please Log In to post comment</p>
                             <hr>
                             <ul class="media-list" >
                                 <li class="media" *ngFor="let message of comments">

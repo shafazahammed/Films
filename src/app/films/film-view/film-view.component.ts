@@ -27,6 +27,7 @@ export class FilmViewComponent implements OnInit {
   message : any;
   isLoggedIn : boolean = false;
   posting : boolean = false;
+  loginerror : boolean = false;
 
   constructor(private films : FilmsService,
      private authService : AuthService,
@@ -38,24 +39,23 @@ export class FilmViewComponent implements OnInit {
   ngOnInit(): void {
     //check authentication
     this.isLoggedIn = this.authService.loggedIn;
-    console.log('logged',this.isLoggedIn);
     this.getFilm();
-    console.log('film',this.filmid.id);
   }
 
   // get film id its id
   getFilm(){
     this.films.getFilm(this.filmid.id).subscribe((res:any) =>{
-      console.log('res',res);
       this.film = res.film;
       this.film.genre = JSON.parse(this.film.genre);
-      console.log('film',this.film);
       this.comments = res.comments;
     })
   }
 
   postComment(){
-    console.log('comments',this.comment);
+    this.loginerror = false;
+    if(!this.isLoggedIn){
+      this.loginerror = true;
+    }
     if(this.comment == null || this.comment =='') {
       return false;
     }
@@ -73,12 +73,10 @@ export class FilmViewComponent implements OnInit {
     this.location.back();
   }
   getComments(){
-    console.log('comments',this.comment);
     if(this.comment == null){
       return false;
     }
     this.films.getAllComments(this.film.film_id).subscribe( res =>{
-
        this.comments = res.comments
     })
   }
