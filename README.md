@@ -1,3 +1,5 @@
+<strong> Films <strong>
+
 films is Created using Angular as a Front end and Nodejs as a Backend
 
 Films is website where users can see film lists and its details
