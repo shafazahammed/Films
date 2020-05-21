@@ -1,4 +1,4 @@
-<strong> Films <strong>
+<h3><strong> Films </strong></h3>
 
 films is Created using Angular as a Front end and Nodejs as a Backend
 
